@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CS Paglu Helper</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #121212;
+      color: #f5f5f5;
+      text-align: center;
+    }
+    header {
+      padding: 1rem;
+      background: #1e1e1e;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+    }
+    header img {
+      max-width: 300px;
+      margin-bottom: 1rem;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2rem;
+      color: #00ffe0;
+    }
+    header p {
+      margin: 0.5rem 0;
+      color: #aaa;
+      font-size: 1rem;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1rem;
+      padding: 2rem;
+    }
+    .tool-card {
+      background: #1c1c1c;
+      border-radius: 12px;
+      padding: 1.5rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.7);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .tool-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.9);
+    }
+    .tool-card h2 {
+      margin-top: 0;
+      color: #00ffe0;
+    }
+    .tool-card p {
+      color: #ccc;
+      font-size: 0.9rem;
+    }
+    .tool-content {
+      margin-top: 1rem;
+      text-align: left;
+    }
+    input, textarea, select, button {
+      width: 100%;
+      padding: 0.5rem;
+      margin-top: 0.5rem;
+      border: none;
+      border-radius: 6px;
+      outline: none;
+    }
+    input, textarea, select {
+      background: #222;
+      color: #fff;
+    }
+    button {
+      background: #00ffe0;
+      color: #000;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    table {
+      width: 90%;
+      margin: 2rem auto;
+      border-collapse: collapse;
+      background: #1c1c1c;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    table th, table td {
+      border: 1px solid #333;
+      padding: 8px;
+      font-size: 0.9rem;
+    }
+    table th {
+      background: #00ffe0;
+      color: #000;
+    }
+    footer {
+      background: #1e1e1e;
+      padding: 1rem;
+      font-size: 0.8rem;
+      color: #888;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <!-- NEC Image -->
+    <img src="nec2025.jpg" alt="NEC 2025 Banner">
+    <h1>CS Paglu Helper</h1>
+    <p>#SiteInStyleECB</p>
+  </header>
+  <main class="grid">
+    
+    <!-- Calculator -->
+    <div class="tool-card">
+      <h2>Calculator</h2>
+      <p>Quick math operations.</p>
+      <div class="tool-content">
+        <input type="text" id="calcInput" placeholder="e.g. 5+3*2">
+        <button onclick="calculate()">Calculate</button>
+        <p id="calcResult"></p>
+      </div>
+    </div>
+    
+    <!-- Notes -->
+    <div class="tool-card">
+      <h2>Notes</h2>
+      <p>Write & save notes locally.</p>
+      <div class="tool-content">
+        <textarea id="notesArea" rows="6" placeholder="Type your notes..."></textarea>
+        <button onclick="saveNotes()">Save Notes</button>
+        <button onclick="loadNotes()">Load Notes</button>
+      </div>
+    </div>
+    
+    <!-- Converter (Number Systems) -->
+    <div class="tool-card">
+      <h2>Number System Converter</h2>
+      <p>Convert between binary, decimal, and hexadecimal.</p>
+      <div class="tool-content">
+        <input type="text" id="numInput" placeholder="Enter a number">
+        <select id="fromBase">
+          <option value="2">Binary</option>
+          <option value="10" selected>Decimal</option>
+          <option value="16">Hexadecimal</option>
+        </select>
+        <select id="toBase">
+          <option value="2">Binary</option>
+          <option value="10">Decimal</option>
+          <option value="16" selected>Hexadecimal</option>
+        </select>
+        <button onclick="convertNumber()">Convert</button>
+        <p id="numResult"></p>
+      </div>
+    </div>
+    
+    <!-- Random Data Generator -->
+    <div class="tool-card">
+      <h2>Random Data Generator</h2>
+      <p>Generate random values for different coding languages.</p>
+      <div class="tool-content">
+        <select id="langSelect">
+          <option value="python">Python</option>
+          <option value="javascript">JavaScript</option>
+          <option value="java">Java</option>
+          <option value="c">C</option>
+        </select>
+        <button onclick="generateRandomData()">Generate</button>
+        <pre id="randomOutput"></pre>
+      </div>
+    </div>
+    
+  </main>
+
+  <!-- ASCII & Unicode Table -->
+  <section>
+    <h2>ASCII & Unicode Reference</h2>
+    <table>
+      <tr><th>Char</th><th>ASCII</th><th>Unicode</th></tr>
+      <tr><td>A</td><td>65</td><td>U+0041</td></tr>
+      <tr><td>B</td><td>66</td><td>U+0042</td></tr>
+      <tr><td>a</td><td>97</td><td>U+0061</td></tr>
+      <tr><td>b</td><td>98</td><td>U+0062</td></tr>
+      <tr><td>0</td><td>48</td><td>U+0030</td></tr>
+      <tr><td>1</td><td>49</td><td>U+0031</td></tr>
+      <tr><td>@</td><td>64</td><td>U+0040</td></tr>
+      <tr><td>$</td><td>36</td><td>U+0024</td></tr>
+      <tr><td>Space</td><td>32</td><td>U+0020</td></tr>
+      <tr><td>Enter</td><td>13</td><td>U+000D</td></tr>
+    </table>
+  </section>
+
+  <footer>
+    &copy; 2025 CS Paglu Helper. All rights reserved.
+  </footer>
+
+  <script>
+    // Calculator
+    function calculate() {
+      try {
+        const input = document.getElementById("calcInput").value;
+        const result = eval(input);
+        document.getElementById("calcResult").textContent = "Result: " + result;
+      } catch {
+        document.getElementById("calcResult").textContent = "Invalid Expression";
+      }
+    }
+
+    // Notes (localStorage)
+    function saveNotes() {
+      const notes = document.getElementById("notesArea").value;
+      localStorage.setItem("myNotes", notes);
+      alert("Notes saved!");
+    }
+    function loadNotes() {
+      const saved = localStorage.getItem("myNotes");
+      if (saved) {
+        document.getElementById("notesArea").value = saved;
+      } else {
+        alert("No notes found!");
+      }
+    }
+
+    // Number System Converter
+    function convertNumber() {
+      const numInput = document.getElementById("numInput").value.trim();
+      const fromBase = parseInt(document.getElementById("fromBase").value);
+      const toBase = parseInt(document.getElementById("toBase").value);
+
+      try {
+        const decimalValue = parseInt(numInput, fromBase);
+        if (isNaN(decimalValue)) throw "Invalid input";
+        const result = decimalValue.toString(toBase).toUpperCase();
+        document.getElementById("numResult").textContent = "Result: " + result;
+      } catch {
+        document.getElementById("numResult").textContent = "Invalid conversion!";
+      }
+    }
+
+    // Random Data Generator
+    function generateRandomData() {
+      const lang = document.getElementById("langSelect").value;
+      let output = "";
+      let randomNum = Math.floor(Math.random() * 100);
+      let randomStr = Math.random().toString(36).substring(2, 8);
+
+      if (lang === "python") {
+        output = `random_number = ${randomNum}\nrandom_string = "${randomStr}"`;
+      } else if (lang === "javascript") {
+        output = `let randomNumber = ${randomNum};\nlet randomString = "${randomStr}";`;
+      } else if (lang === "java") {
+        output = `int randomNumber = ${randomNum};\nString randomString = "${randomStr}";`;
+      } else if (lang === "c") {
+        output = `int randomNumber = ${randomNum};\nchar randomString[] = "${randomStr}";`;
+      }
+      document.getElementById("randomOutput").textContent = output;
+    }
+  </script>
+</body>
+</html>
